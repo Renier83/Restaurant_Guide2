@@ -35,3 +35,10 @@ d3.csv("../static/data/" + csvfile + ".csv").then((data) => {
 
 });
 
+// LOOK HERE FOR AN EXAMPLE OF BOOTSTRAPPING A TABLE
+table = d3.select('#city_tbl')
+table.attr('class', 'table table-striped')
+table.attr('border', null)
+
+th_tags = table.selectAll('th');
+th_tags.attr('class', 'text-center')

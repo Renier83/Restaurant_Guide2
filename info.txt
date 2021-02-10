@@ -1,0 +1,7 @@
+
+https://github.com/toddbirchard/plotlydash-flask-tutorial/blob/master/README.md
+* Tutorial:?https://hackersandslackers.com/plotly-dash-with-flask/
+* Demo:?https://plotlydashflask.hackersandslackers.app/
+
+https://dash.plotly.com/layout
+

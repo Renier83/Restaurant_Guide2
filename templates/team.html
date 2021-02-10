@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Team</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin="" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+  </head>
+
+  <body style='margin-top:0;margin-left:20px;margin-right:0;'>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/" id="logo">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Where to Go
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/city/SanJuan">San Juan</a>
+              <a class="dropdown-item" href="/city/Ponce">Ponce</a>
+              <a class="dropdown-item" href="/city/Arecibo">Arecibo</a>
+              <a class="dropdown-item" href="/city/Fajardo">Fajardo</a>
+              <a class="dropdown-item" href="/city/Rincon">Rincon</a>
+              <a class="dropdown-item" href="/city/Humacao">Humacao</a>
+              <a class="dropdown-item" href="/city/Mayaguez">Mayaguez</a>
+
+            </div>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/information">Information</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/team">Team</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </nav>
+
+    <!-- Neo Lights text -->
+    <h1>Purpose of Project 2</h1>
+    <h4>
+      <script language="JavaScript1.2">
+        /*
+        Neon Lights Text
+        By JavaScript Kit (http://javascriptkit.com)
+        Over 400+ free scripts here!
+        */
+
+        var message = "The purpose of this project is to be able to showcase some skills that we have learned but at the same time start " +
+          "the foundation for project 3.  We create an interactive map of Puerto Rico where you would be able to see and select different " +
+          "types of restaurants in the island.  We select 7 counties or (pueblos) out of the 78 that are in PR."
+
+        var neonbasecolor = "gray"
+        var neontextcolor = "blue"
+        var flashspeed = 100  //in milliseconds
+
+        var n = 0
+        if (document.all || document.getElementById) {
+          document.write('')
+          for (m = 0; m < message.length; m++)
+            document.write('<span id="neonlight' + m + '">' + message.charAt(m) + '</span>')
+          document.write('')
+        }
+        else
+          document.write(message)
+
+        function crossref(number) {
+          var crossobj = document.all ? eval("document.all.neonlight" + number) : document.getElementById("neonlight" + number)
+          return crossobj
+        }
+
+        function neon() {
+
+          //Change all letters to base color
+          if (n == 0) {
+            for (m = 0; m < message.length; m++)
+              //eval("document.all.neonlight"+m).style.color=neonbasecolor
+              crossref(m).style.color = neonbasecolor
+          }
+
+          //cycle through and change individual letters to neon color
+          crossref(n).style.color = neontextcolor
+
+          if (n < message.length - 1)
+            n++
+          else {
+            n = 0
+            clearInterval(flashing)
+            setTimeout("beginneon()", 1500)
+            return
+          }
+        }
+
+        function beginneon() {
+          if (document.all || document.getElementById)
+            flashing = setInterval("neon()", flashspeed)
+        }
+        beginneon()
+
+
+      </script>
+    </h4>
+
+    <!-- Fly in -->
+    <style type="text/css">
+      .glidetext {
+        position: relative;
+        /*Set initial position of your text. Make it just enough to hide the text from view:*/
+        left: -500px;
+      }
+    </style>
+
+    <script type="text/javascript">
+
+      //Sequential fly-in text script- by JavaScriptKit.com
+      //For this script and 400+ more, visit http://www.javascriptkit.com
+      //This notice must stay intact for use
+
+      var pausebetweenmsg = 100 //customize pause in miliseconds between each message showing up (3000=3 seconds)
+      var glidespeed = 5 //customize glide speed in pixels per frame.
+
+      var curobjindex = 0
+
+      function actualstyle(el, cssproperty) {
+        if (el.currentStyle)
+          return el.currentStyle[cssproperty]
+        else if (window.getComputedStyle) {
+          var elstyle = window.getComputedStyle(el, "")
+          return elstyle.getPropertyValue(cssproperty)
+        }
+      }
+
+      function collectElementbyClass() {
+        var classname = "glidetext"
+        glidearray = new Array()
+        var inc = 0
+        var alltags = document.all ? document.all : document.getElementsByTagName("*")
+        for (i = 0; i < alltags.length; i++) {
+          if (alltags[i].className == classname)
+            glidearray[inc++] = alltags[i]
+        }
+        if (glidearray.length > 0)
+          onebyoneglide()
+      }
+
+      function onebyoneglide() {
+        if (curobjindex < glidearray.length)
+          glidetimer = setInterval("glideroutine()", 50)
+      }
+
+      function glideroutine() {
+        if (parseInt(actualstyle(glidearray[curobjindex], "left")) < 0)
+          glidearray[curobjindex].style.left = parseInt(actualstyle(glidearray[curobjindex], "left")) + 50 + "px"
+        else {
+          glidearray[curobjindex].style.left = 0
+          curobjindex++
+          clearInterval(glidetimer)
+          setTimeout("onebyoneglide()", pausebetweenmsg)
+        }
+      }
+
+      if (window.addEventListener)
+        window.addEventListener("load", collectElementbyClass, false)
+      else if (window.attachEvent)
+        window.attachEvent("onload", collectElementbyClass)
+      else if (document.getElementById)
+        window.onload = collectElementbyClass
+
+    </script>
+    <p></p>
+    <h2>Team members:</h2>
+    <div class="glidetext">Renier Mendez</div>
+    <div class="glidetext">Marilou Francis</div>
+    <div class="glidetext">Henry Tran</div>
+    <div class="glidetext">Anthony Hughes</div>
+    <div class="glidetext">Christina Redmond</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"></script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""></script>
+    <!-- D3 JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
+    <!-- API key -->
+    <script type="text/javascript" src="/static/js/config.js"></script>
+    <!-- Our JavaScript -->
+    <!-- <script type="text/javascript" src="/static/js/info.js"></script> -->
+  </body>
+
+</html>

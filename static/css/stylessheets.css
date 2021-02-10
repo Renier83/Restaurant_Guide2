@@ -1,0 +1,14 @@
+body{
+    background-color:rgb(80, 195, 233)
+}
+h1{
+    color:black;
+    text-align:center
+}
+p{
+    text-align: center;
+    color:black
+}
+
+#mapid { height: 75vh; }
+#areid {height: 75vh;}

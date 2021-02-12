@@ -73,5 +73,8 @@ table td:last-child {
 }
 
 body {
-    background-color:lightgreen;
+    background-color:rgb(243, 204, 74);
+}
+.navbar {
+    background-color: lightcoral;
 }

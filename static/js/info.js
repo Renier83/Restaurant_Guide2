@@ -63,11 +63,23 @@ cityfile.forEach(d => {
     marker.addTo(mymap);
 });
 
-d3.text("../static/data/" + city + ".txt", function (error, data) {
-    if (error)
-        return console.error(error);
-    d3.select("#output")
-        .append("p")
-        .text(data);
-});
+// d3.text("../static/data/" + city + ".txt", function (error, data) {
+//     if (error)
+//         return console.error(error);
+//     d3.select("#output")
+//         .append("p")
+//         .text(data);
+// });
 
+d3.json('/api/restaurants', function(data) {
+    data = data.filter(d => d['city'] == city);
+    data.forEach(d => {
+        console.log(d);
+        var coords = [d['lat'], d['lng']];
+        var restaurant_name = d['name'];
+        var address = d['address'];
+        marker = L.circleMarker(d).addTo(mymap);
+        marker.bindPopup(`${restaurant_name}<hr/>${address}<br>`)
+        marker.addTo(mymap);
+    });
+});

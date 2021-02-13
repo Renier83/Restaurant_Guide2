@@ -94,7 +94,7 @@ body {
 
 .carousel-indicators {
     display: flex;
-    justify-content: flex-start;
-    align-items: left;
+    justify-content: center;
+    align-items: baseline;
 }
 

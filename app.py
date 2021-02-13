@@ -138,10 +138,11 @@ def information():
 @app.route('/info', methods=['POST', 'GET'])
 def info():
     print("/info")
-
+    
     cityname = request.form['cityID']
-
-    return render_template('info.html', cityname=cityname)
+    keyword = request.form['typeID']
+    
+    return render_template('info.html', cityname=cityname, keyword=keyword)
 
 
 @app.route('/team')

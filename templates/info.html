@@ -20,6 +20,10 @@
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
   </head>
+  <!-- Restaurant Type Filter-->
+  <script>
+    var rest_type = '{{keyword}}';
+  </script>
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -81,6 +85,19 @@
         <option value="Humacao">Humacao</option>
         <option value="Mayaguez">Mayaguez</option>
       </select>
+      &nbsp;&nbsp;
+      <!-- Restaurant drop down-->
+            <label>RESTAURANT:</label>
+            <select name="typeID" id="typeID" onchange="submitform(this)">
+              <option value="all" selected>Select Type</option>
+              <option value="bar restaurant">Bar restaurant</option>
+              <option value="chinese">Chinese</option>
+              <option value="fast food">Fast food</option>
+              <option value="japanese">Japanese</option>
+              <option value="middle eastern">Middle eastern</option>
+              <option value="puertorican">Puertorican</option>
+              <option value="spanish">Spanish</option>
+          </select>
       <!-- <input type="submit"> -->
     </form>
 

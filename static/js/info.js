@@ -1,10 +1,12 @@
-console.log("info")
+//console.log("info")
 
 var city = d3.select("#city_id").property("value");
+//console.log(rest_type);
+
 city = city.replace(/\s+/g, '');
 
-console.log("city");
-console.log(city);
+//console.log("city");
+//console.log(city);
 
 switch (city) {
     case "SanJuan":
@@ -63,23 +65,48 @@ cityfile.forEach(d => {
     marker.addTo(mymap);
 });
 
-// d3.text("../static/data/" + city + ".txt", function (error, data) {
-//     if (error)
-//         return console.error(error);
-//     d3.select("#output")
-//         .append("p")
-//         .text(data);
-// });
+d3.text("../static/data/" + city + ".txt", function (error, data) {
+    if (error)
+        return console.error(error);
+    d3.select("#output")
+        .append("p")
+        .text(data);
+});
 
 d3.json('/api/restaurants', function(data) {
+
     data = data.filter(d => d['city'] == city);
+
+    console.log(rest_type);
+
+    if(rest_type != 'all') {
+        data = data.filter(d => d['keyword'] == rest_type);
+    }
+
     data.forEach(d => {
-        console.log(d);
+        //console.log(d);
         var coords = [d['lat'], d['lng']];
         var restaurant_name = d['name'];
+        var keyword = d['keyword'];
         var address = d['address'];
+    
         marker = L.circleMarker(d).addTo(mymap);
-        marker.bindPopup(`${restaurant_name}<hr/>${address}<br>`)
+        marker.bindPopup(`${restaurant_name}<hr/>${keyword}<br/>${address}<br>`)
         marker.addTo(mymap);
     });
+
+    
 });
+
+// d3.json('/api/restaurants', function(data) {
+//     data = data.filter(d => d['city'] == city);
+//     data.forEach(d => {
+//         console.log(d);
+//         var coords = [d['lat'], d['lng']];
+//         var restaurant_name = d['name'];
+//         var address = d['address'];
+//         marker = L.circleMarker(d).addTo(mymap);
+//         marker.bindPopup(`${restaurant_name}<hr/>${address}<br>`)
+//         marker.addTo(mymap);
+//     });
+// });

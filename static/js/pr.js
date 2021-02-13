@@ -56,9 +56,5 @@ cities.forEach(d => {
     marker.bindPopup(`${coords}<hr/>${city}<br>`)
     marker.addTo(mymap);
 });
-var mymap = L.map("mapid", {
-    center: [18.220833, -66.590149],
-    zoom: 9.3,
-    scrollWheelZoom: false
-});
+
 

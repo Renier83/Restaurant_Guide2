@@ -5,7 +5,8 @@ console.log("pr.js");
 // Create a map object
 var mymap = L.map("mapid", {
     center: [18.220833, -66.590149],
-    zoom: 10
+    zoom: 9,
+    scrollWheelZoom: false
 });
 
 console.log(mymap);
@@ -55,30 +56,9 @@ cities.forEach(d => {
     marker.bindPopup(`${coords}<hr/>${city}<br>`)
     marker.addTo(mymap);
 });
+var mymap = L.map("mapid", {
+    center: [18.220833, -66.590149],
+    zoom: 9.3,
+    scrollWheelZoom: false
+});
 
-
-// ALL MARKERS
-
-// d3.json('/api/restaurants').then(data => {
-//     console.log(data);
-
-//     data.forEach(d => {
-
-//         var coords = [d['lat'], d['lng']];
-//         var name = d['name'];
-//         var address = d['address'];
-
-//         marker = L.marker(coords, { 'title': name });
-//         marker.bindPopup(`<h4>${name}</h4><hr/><b>${address}</b>`)
-//         marker.addTo(mymap);
-
-
-
-//         //mymap.setZoom(13);
-//         //mymap.setView(new L.LatLng(ponceCoords[0], ponceCoords[1]), 13)
-
-
-
-
-//     });
-// });

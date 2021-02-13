@@ -57,7 +57,7 @@ table td:last-child {
 } 
 
 
-.carousel-item img {
+/*.carousel-item img {
     max-height: 400px;
     width: auto;
     min-width: auto;
@@ -70,11 +70,31 @@ table td:last-child {
 
 .carousel-text {
     color: white;
-}
+} */
 
 body {
-    background-color:rgb(243, 204, 74);
+    background-color: #ffc324;
 }
+
+.card-img-top {
+    width: auto;
+    height: 250px;
+    max-height: 250px;
+}
+
 .navbar {
-    background-color: lightcoral;
+    background-color:rgb(228, 31, 31);
 }
+
+/*.controls-top {
+    display: fluid;
+    justify-content: flex-start;
+    align-items: center;
+} */
+
+.carousel-indicators {
+    display: flex;
+    justify-content: flex-start;
+    align-items: left;
+}
+

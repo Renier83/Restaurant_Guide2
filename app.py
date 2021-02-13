@@ -3,7 +3,7 @@ import pandas as pd
 import pymysql
 from sqlalchemy import create_engine
 import sqlalchemy
-from flask import Flask, request, render_template, jsonify, send_from_directory 
+from flask import Flask, request, render_template, jsonify
 import os
 
 # Heroku check
@@ -48,14 +48,9 @@ rating = 0
 
 # Initialize Flask application
 app = Flask(__name__)
-app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Set up your default route
 
-# @app.route('/favicon.ico') 
-# def favicon(): 
-#     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
-    
 
 @app.route('/')
 def home():
@@ -66,18 +61,14 @@ def home():
 def city(cityName=None):
     print("/city/<name>", cityName)
 
-    if cityName == "San Juan":
-        csvfile = "static/data/" + "SanJuan" + ".csv"
-        
-    else:
-        csvfile = "static/data/" + cityName + ".csv"
-        
+  
+
     sql_statement = "SELECT keyword as Type, count(*) as Total from pr.restaurants_tbl where city='" + \
         cityName + "' group by keyword"
 
     type_df = pd.read_sql(sql_statement, con=engine)
 
-       
+    csvfile = "static/data/" + cityName + ".csv"
     type_df.to_csv(csvfile, index=False)
 
     sql_statement = "SELECT name as 'Restaurant Name', keyword as Type, business_status as Status, price_level " + \
@@ -104,28 +95,15 @@ def search():
 
     print(f"city= {cityName}  {keyword}  {price}  {rating}")
 
-    if cityName == "San Juan":
-        csvfile = "static/data/" + "SanJuan" + ".csv"
-        
-    else:
-        csvfile = "static/data/" + cityName + ".csv"
-  
-    
+
     sql_statement = "SELECT keyword as Type, count(*) as Total from pr.restaurants_tbl where city='" + \
         cityName + "' group by keyword"
 
     type_df = pd.read_sql(sql_statement, con=engine)
 
-    # if cityName == "San Juan":
-    #     fileName = "San Juan"
-    #     cityName = "San Juan"
-    # else:
-    #     fileName2 = cityName
-    
-   
-    
+    csvfile = "static/data/" + cityName + ".csv"
     type_df.to_csv(csvfile, index=False)
-   
+
     sql_statement = "SELECT name as 'Restaurant Name', keyword as Type, business_status as Status, price_level " + \
         "as Price, rating as Rating, address as Address from pr.restaurants_tbl where city='" + cityName + "' "
 
@@ -183,7 +161,7 @@ def get_restaurants():
         SELECT
             *
         FROM
-            restaurants_tbl
+            pr.restaurants_tbl
         '''
 
     resturants_data = pd.read_sql(query, con=conn)

@@ -1,5 +1,5 @@
 var csvfile = d3.select("#city_id").property("value");
-csvfile = csvfile.replace(/\s+/g, '');
+// csvfile = csvfile.replace(/\s+/g, '');
 
 console.log("csvfile");
 console.log("../static/data / " + csvfile + ".csv");
